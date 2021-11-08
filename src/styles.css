@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+
+.main {
+	min-height: 100%;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.user {
+	color: #9166CC;
+}
+
+.cal {
+	color: brown;
+}
+
+.at {
+	color: #0D6EFD;
+	font-weight: bolder;
+}
+
+.lock1 {
+	color: #FA8142;
+	font-weight: bolder;
+}
+
+.lock2 {
+	color: #09C372;
+	font-weight: bolder;
+}
+
+.error {
+	color: #FF3860;
+}
+
+.success {
+	color: #09C372;
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #D4D5D7;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #454E56;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #2A2E35;
+}

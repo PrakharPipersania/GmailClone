@@ -1,0 +1,11 @@
+.btn-bg {
+	background-color: white;
+	border: 1px solid #D43126;
+	font-weight: bolder;
+	box-shadow: none;
+	border-radius: 20px;
+}
+
+.btn-bg:hover {
+	background-color: #FCE8E6;
+}

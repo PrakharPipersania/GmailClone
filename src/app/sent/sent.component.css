@@ -1,0 +1,43 @@
+.div-opts,
+.div-btm {
+	border-bottom: 1.5px solid #ECEFF1;
+}
+
+.div-btm:hover {
+	box-shadow: 0 0 3px #333;
+	border-left: 1.5px solid #DADCE0;
+	border-right: 1.5px solid #DADCE0;
+}
+
+.read {
+	background-color: #F5F7F7;
+}
+
+.msg-clr {
+	color: #5F6368;
+}
+
+.rm-extra {
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.star {
+	color: #F4C84B;
+}
+
+.mail-message {
+	color: black;
+	text-decoration: none;
+}
+
+.btn-bg {
+	color: #4A4A4A;
+	box-shadow: none;
+}
+
+.btn-bg:hover {
+	color: black;
+}

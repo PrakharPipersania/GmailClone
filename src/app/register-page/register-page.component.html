@@ -1,0 +1,110 @@
+<div class="main">
+   <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+         <div class="col-lg-7 col-sm-10">
+            <div class="card box m-5 p-4">
+               <div class="card-body text-clr">
+                  <div>
+                     <h2 class="text-center m-0"><b>Create Account</b></h2>
+                     <h6 class="text-center text-muted small m-0">and let's get you to the Awesome!</h6>
+                  </div>
+                  <form [formGroup]="userForm" (ngSubmit)="submitUser()">
+                  <div class="form-group mt-3">
+                     <label for="register-name">Name</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="user fa fa-user"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserName.touched && userForm.controls.UserName.invalid,
+                           'has-success' : userForm.controls.UserName.touched && userForm.controls.UserName.valid
+                           }" formControlName="UserName" type="text" class="form-control" id="register-name" placeholder="Name">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserName.touched && userForm.controls.UserName.invalid">Username cannot be empty</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="register-dob">Date of Birth</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="cal fa fa-calendar"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserDOB.touched && userForm.controls.UserDOB.invalid,
+                           'has-success' : userForm.controls.UserDOB.touched && userForm.controls.UserDOB.valid
+                           }" formControlName="UserDOB" type="date" class="form-control" id="register-dob">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserDOB.touched && userForm.controls.UserDOB.invalid">Date of Birth cannot be empty</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="register-gender">Gender</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="lock2 fa fa-male"></i> </span>
+                        </div>
+                        <select [ngClass]="{
+                           'has-error' : userForm.controls.UserGender.touched && userForm.controls.UserGender.invalid,
+                           'has-success' : userForm.controls.UserGender.touched && userForm.controls.UserGender.valid
+                           }" formControlName="UserGender" class="form-control" id="register-gender">
+                           <option value="" disabled selected>Gender</option>
+                           <option value="Male">Male</option>
+                           <option value="Female">Female</option>
+                        </select>
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserGender.touched && userForm.controls.UserGender.invalid">Please select Gender</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="register-email">Choose Email Address</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="at fa fa-at"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserEmail.touched && userForm.controls.UserEmail.invalid,
+                           'has-success' : userForm.controls.UserEmail.touched && userForm.controls.UserEmail.valid
+                           }" formControlName="UserEmail" type="email" class="form-control" id="register-email" placeholder="Email">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserEmail.touched && userForm.controls.UserEmail.invalid">Please enter a Valid Email</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="register-pwd">Password</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="lock1 fa fa-lock"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserPassword.touched && userForm.controls.UserPassword.invalid,
+                           'has-success' : userForm.controls.UserPassword.touched && userForm.controls.UserPassword.valid
+                           }" formControlName="UserPassword" type="password" class="form-control" id="register-pwd" placeholder="Password">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserPassword.errors?.required && userForm.controls.UserPassword.touched && userForm.controls.UserPassword.invalid">Password cannot be empty</div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserPassword.errors?.minlength && userForm.controls.UserPassword.touched && userForm.controls.UserPassword.invalid">Minimum 8 characters required</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="register-cpwd">Confirm Password</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="lock2 fa fa-lock"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.ConfirmPwd.touched && userForm.controls.ConfirmPwd.invalid,
+                           'has-success' : userForm.controls.ConfirmPwd.touched && userForm.controls.ConfirmPwd.valid
+                           }" formControlName="ConfirmPwd" type="password" class="form-control" id="register-cpwd" placeholder="Confirm Password">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.ConfirmPwd.errors?.required && userForm.controls.ConfirmPwd.touched && userForm.controls.ConfirmPwd.invalid">Password cannot be empty</div>
+                     <div class="text-end error" *ngIf="userForm.controls.ConfirmPwd.errors?.passwordValidator && userForm.controls.ConfirmPwd.touched">Entered Passwords didn't match! Please try again.</div>
+                  </div>
+                  <div class="text-center">
+                     <button type="submit" class="btn btn-bg text-center mt-3">Register</button>
+                  </div>
+                  </form>
+                  <div class="text-center success mt-3" *ngIf="isRegistered===true">User Registration Successful! Please Login.</div>
+                  <div class="text-center mt-3">
+                     Already have an account ?
+                     <a routerLink="/login">Log in.</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

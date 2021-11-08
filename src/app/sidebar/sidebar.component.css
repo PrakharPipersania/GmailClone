@@ -1,0 +1,100 @@
+.page-wrapper {
+	max-height: 100vh;
+	overflow-y: scroll;
+}
+
+.nav-btm {
+	border-bottom: 0.5px solid #ECEFF1;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+.mail-types {
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+	background-color: #F1F3F4;
+	color: black;
+}
+
+.mail-types:hover {
+	background-color: #FCE8E6;
+}
+
+.text-clr {
+	color: black;
+}
+
+.text-clr:hover {
+	color: #D93025;
+	font-weight: bolder;
+}
+
+.btn-bg {
+	background-color: white;
+	box-shadow: none;
+	border-radius: 20px;
+	box-shadow: 0 0 2px black;
+	color: black;
+}
+
+.btn-bg:hover {
+	box-shadow: 0 0 4px black;
+}
+
+.modal-border {
+	box-shadow: 0 0 4px black;
+}
+
+.modal-heading {
+	background-color: #404040;
+	color: white;
+}
+
+.modal-dialog {
+    position:fixed;
+    bottom:5px;
+    right:5px;
+    margin:0;
+}
+
+.modal-close {
+	font-size: 20px;
+	color: white;
+}
+
+input,
+input:focus,
+textarea,
+textarea:focus,
+.input-icon {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1.5px solid #ECEFF1;
+	border-radius: 0;
+	box-shadow: none;
+	outline: none;
+}
+
+.input-icon {
+	background-color: white;
+}
+
+textarea,
+textarea:focus {
+	resize: none;
+	border-bottom: 0;
+}
+
+.btn-ro {
+	box-shadow: none;
+}
+
+.has-error,
+.has-error:active,
+.has-error:focus {
+	border-bottom: 1.5px solid #FF3860;
+}

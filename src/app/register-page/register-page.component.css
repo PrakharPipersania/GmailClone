@@ -1,0 +1,42 @@
+.box {
+	border-radius: 10px;
+	box-shadow: 0 0 10px #000;
+}
+
+.input-icon {
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	padding-right: 2px;
+	height: 100%;
+}
+
+select,
+select:focus,
+input,
+input:focus {
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	box-shadow: none;
+}
+
+.btn-bg {
+	background-color: white;
+	border: 1px solid #D43126;
+	font-weight: bolder;
+	box-shadow: none;
+	border-radius: 20px;
+}
+
+.btn-bg:hover {
+	background-color: #FCE8E6;
+}
+
+.has-error {
+	box-shadow: 0 0 4px red;
+}
+
+.has-success {
+	box-shadow: 0 0 4px #09C372;
+}

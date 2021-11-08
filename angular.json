@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "07add213-51b3-4024-9812-d645aed313b1"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -24,25 +27,35 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/crypto-js/crypto-js.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
                 }
               ],
               "fileReplacements": [

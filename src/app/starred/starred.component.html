@@ -1,0 +1,69 @@
+<!-- Starred -->
+<div *ngIf="starredMail">
+    <div class="py-1 px-3 text-muted div-opts">
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-transparent btn-bg" (click)="load()"><i class="fa fa-refresh"></i></button>
+            <button class="btn btn-transparent btn-bg">Starred Mails: {{mailList.length}}</button>
+        </div>
+    </div>
+    <div *ngFor="let mail of mailList">
+        <div class="py-1 px-3 div-btm read" *ngIf="checkSRRead(mail,'show')">
+            <div class="row d-flex justify-content-between">
+                <div class="col-2 col-sm-1 text-center">
+                    <button class="btn btn-transparent btn-bg p-0" (click)="toggleStarred(mail)">
+                        <i [ngClass]="checkSRStar(mail)?'fa fa-star star':'fa fa-star-o text-muted'"></i>
+                    </button>
+                </div>
+                <a class="col-10 col-sm-11 mail-message" (click)="openMail(mail)">
+                    <div class="col-10 col-sm-3 rm-extra">{{getSender(mail)}}</div>
+                    <div class="col-8 col-sm-6 rm-extra">{{mail.subject}} - <span class="msg-clr">{{mail.message}}</span></div>
+                    <div class="col-4 col-sm-2 rm-extra msg-clr text-end">{{mailDateFormat(mail.msgDate)}}</div>
+                </a>
+            </div>
+        </div>
+        <div class="py-1 px-3 div-btm" *ngIf="checkSRRead(mail,'hide')">
+            <div class="row d-flex justify-content-between">
+                <div class="col-2 col-sm-1 text-center">
+                    <button class="btn btn-transparent btn-bg p-0" (click)="toggleStarred(mail)">
+                        <i [ngClass]="checkSRStar(mail)?'fa fa-star star':'fa fa-star-o text-muted'"></i>
+                    </button>
+                </div>
+                <a class="col-10 col-sm-11 mail-message" (click)="openMail(mail)">
+                    <div class="col-10 col-sm-3 rm-extra"><b>{{getSender(mail)}}</b></div>
+                    <div class="col-8 col-sm-6 rm-extra"><b>{{mail.subject}}</b> - <span class="msg-clr">{{mail.message}}</span></div>
+                    <div class="col-4 col-sm-2 rm-extra text-end"><b>{{mailDateFormat(mail.msgDate)}}</b></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Starred Mail -->
+<div *ngIf="!starredMail">
+    <div class="py-1 px-3 text-muted div-opts">
+        <button class="btn btn-transparent btn-bg" (click)="load()"><i class="fa fa-arrow-left"></i></button>
+        <button class="btn btn-transparent btn-bg" (click)="deleteEmail(mailContent)"><i class="fa fa-trash"></i></button>
+    </div>
+    <div class="px-5 py-3">
+        <h3>{{mailContent.subject}}</h3>
+        <div class="row d-flex justify-content-between">
+            <div class="col-sm-7 col-12"><b>{{mailContent.sender}}</b></div>
+            <div class="col-sm-5 col-12">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-10 text-end">
+                        {{getFullDate(mailContent.msgDate)}}
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-transparent btn-bg p-0" (click)="toggleStarred(mailContent)">
+                            <i [ngClass]="checkSRStar(mailContent)?'fa fa-star star':'fa fa-star-o text-muted'"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-transparent btn-bg p-0">to {{getReceiver(mailContent)}}:</button>
+        <div class="row mt-2">
+            <pre style="white-space:pre-wrap;">{{mailContent.message}}</pre>
+        </div>
+        <hr>
+    </div>
+</div>

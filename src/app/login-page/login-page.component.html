@@ -1,0 +1,53 @@
+<div class="main">
+   <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+         <div class="col-lg-7 col-sm-10">
+            <div class="card box mx-5 p-4">
+               <div class="card-body text-clr">
+                  <div>
+                     <h1 class="text-center m-0"><b>Welcome Back</b></h1>
+                     <h6 class="text-center text-muted small m-0">Login to continue</h6>
+                  </div>
+                  <form [formGroup]="userForm" (ngSubmit)="validateUser()">
+                  <div class="form-group mt-3">
+                     <label for="login-email">Email address</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="at fa fa-at"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserEmail.touched && userForm.controls.UserEmail.invalid,
+                           'has-success' : userForm.controls.UserEmail.touched && userForm.controls.UserEmail.valid
+                           }" formControlName="UserEmail" type="email" class="form-control" id="login-email" placeholder="Email">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserEmail.touched && userForm.controls.UserEmail.invalid">Please enter a Valid Email</div>
+                  </div>
+                  <div class="form-group mt-3">
+                     <label for="login-pwd">Password</label>
+                     <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text input-icon px-2"><i class="lock2 fa fa-lock"></i> </span>
+                        </div>
+                        <input [ngClass]="{
+                           'has-error':userForm.controls.UserPassword.touched && userForm.controls.UserPassword.invalid,
+                           'has-success' : userForm.controls.UserPassword.touched && userForm.controls.UserPassword.valid
+                           }" formControlName="UserPassword" type="password" class="form-control" id="login-pwd" placeholder="Password">
+                     </div>
+                     <div class="text-end error" *ngIf="userForm.controls.UserPassword.touched && userForm.controls.UserPassword.invalid">Please enter a Valid Password</div>
+                  </div>
+                  <div class="text-center">
+                     <button type="submit" class="btn btn-bg text-center mt-3">Submit</button>
+                  </div>
+                  </form>
+                  <div class="text-center error mt-3" *ngIf="isValidUser===false">Invalid Email/Password, Please try again</div>
+                  <div class="text-center success mt-3" *ngIf="isValidUser===true">Login Successful!</div>
+                  <div class="text-center mt-3">
+                     Don't have an account ?
+                     <a routerLink="/create-account">Create an account.</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

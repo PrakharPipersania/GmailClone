@@ -1,0 +1,113 @@
+<!-- Topbar -->
+<nav class="navbar navbar-default navbar-static-top navbar-expand nav-btm">
+   <!-- Topbar Navbar -->
+   <div class="container px-0">
+      <!-- Navbar Icon -->
+      <div class="navbar-brand">
+        <div class="btn btn-transparent btn-ro">
+            <i class="fa fa-bars text-muted" (click)="togglemenu()"></i>
+        </div>
+        <img src="./assets/img/gmail_icon.svg" height="27px">
+        <div class="btn btn-transparent btn-ro">
+            <span class="text-muted" style="font-size: 17px"><b>Gmail</b></span>
+        </div>
+      </div>
+      <div class="navbar-nav ml-auto">
+         <div class="nav-item">
+            <span class="navbar-text mx-2 text-muted" style="font-size: 15px"><b>{{userInfo.UserName}}</b></span>
+            <div class="btn btn-transparent btn-ro">
+                <i class="fa fa-sign-out text-muted" (click)="logout()"></i>
+            </div>
+         </div>
+      </div>
+   </div>
+</nav>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar-bg" [ngClass]="{'d-none':sidebarStatus}">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2">
+                <ul class="nav nav-pills flex-column align-items-center align-items-sm-start w-100">
+                    <li class="w-100">
+                        <ul class="collapse show nav flex-column mt-2">
+                            <li>
+                                <button routerLink="/mail/inbox" class="btn btn-bg nav-link" (click)="openPopup()">
+                                    <img src="assets/img/add.png" width="18px"><span class="d-none d-sm-inline"> Compose</span>
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="collapse show nav flex-column mt-3 w-100">
+                            <li class="mail-types mt-1">
+                                <a (click)="redirectTo('/mail/inbox')" class="nav-link">
+                                    <i class="fa fa-inbox text-muted px-2"></i>    
+                                    <span class="d-none d-sm-inline text-clr"> Inbox</span>
+                                </a>
+                            </li>
+                            <li class="mail-types mt-1">
+                                <a (click)="redirectTo('/mail/sent')" class="nav-link">
+                                    <i class="fa fa-paper-plane text-muted px-2"></i>
+                                    <span class="d-none d-sm-inline text-clr"> Sent</span>
+                                </a>
+                            </li>
+                            <li class="mail-types mt-1">
+                                <a (click)="redirectTo('/mail/starred')" class="nav-link">
+                                    <i class="fa fa-star-o text-muted px-2"></i>
+                                    <span class="d-none d-sm-inline text-clr"> Starred</span>
+                                </a>
+                            </li>
+                            <li class="mail-types mt-1">
+                                <a (click)="redirectTo('/mail/trash')" class="nav-link">
+                                    <i class="fa fa-trash text-muted px-2"></i>
+                                    <span class="d-none d-sm-inline text-clr"> Trash</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col p-0 page-wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- Modal - For Sending Email -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-border">
+            <div class="modal-header modal-heading py-1">
+                <h6 class="modal-title">New Message</h6>
+                <button type="button" class="btn btn-transparent btn-ro" (click)="closePopup()">
+                    <span class="modal-close">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="emailForm" (ngSubmit)="validateSendEmail()">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-icon">To</span>
+                        </div>
+                        <input [ngClass]="{'has-error':emailForm.controls.receiver.touched && emailForm.controls.receiver.invalid}" 
+                                formControlName="receiver" type="email" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-icon">Subject</span>
+                        </div>
+                        <input formControlName="subject" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea formControlName="message" class="form-control" rows="7"></textarea>
+                    </div>
+                    <div class="row d-flex justify-content-around text-center">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-danger" (click)="resetEmailMessage()"><i class="fa fa-undo"></i> Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
